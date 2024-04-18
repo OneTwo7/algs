@@ -87,7 +87,7 @@ class RedBlackBST<Key, Value> {
   [Symbol.iterator]() {
     const queue: RedBlackBSTNode<Key, Value>[] = [];
     
-    this.inOrder(this.root, queue);
+    this._inOrder(this.root, queue);
 
     return {
       next: () => {
@@ -105,14 +105,14 @@ class RedBlackBST<Key, Value> {
     };
   }
 
-  private inOrder(x: RedBlackBSTNode<Key, Value> | null, q: RedBlackBSTNode<Key, Value>[]) {
+  private _inOrder(x: RedBlackBSTNode<Key, Value> | null, q: RedBlackBSTNode<Key, Value>[]) {
     if (!x) {
       return null;
     }
 
-    this.inOrder(x.right, q);
+    this._inOrder(x.right, q);
     q.push(x);
-    this.inOrder(x.left, q);
+    this._inOrder(x.left, q);
   }
 
   private _put(x: RedBlackBSTNode<Key, Value> | null, key: Key, value: Value) {
